@@ -13,7 +13,10 @@ public class LoginTests extends TestBase {
         open("https://qa.guru/cms/system/login");
 
         $(".login-form").shouldHave(text("Войти"));
-        $(By.name("email")).setValue("111");
-        $(By.name("password")).setValue("222");
+        $(By.name("email")).setValue("pansergpanin@yandex.ru");
+        $(By.name("password")).setValue("SergPan22031996").pressEnter();
+        $(".main-header__login").click();
+
+        $(".logined-form").shouldHave((text("Здравствуйте, Сергей")));
     }
 }
