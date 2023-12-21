@@ -35,11 +35,14 @@ public class HomeWorks extends TestBase{
         SelenideElement recA = $("#column-a");
         SelenideElement recB = $("#column-b");
 
-//        var coordinate = recB.getRect();
-//        actions().moveToElement($(recA)).clickAndHold().moveByOffset(coordinate.getX(), coordinate.getY()).release().perform();
+        var coordinateA = recA.getRect();
+        var coordinateB = recB.getRect();
+        var x = coordinateB.x - coordinateA.x;
+        var y = coordinateB.y - coordinateA.y;
 
-//        actions().moveToElement($(recA)).clickAndHold().moveByOffset(250, 0).release().perform();
-        $(recA).dragAndDropTo($(recB));
+        actions().moveToElement($(recA)).clickAndHold().moveByOffset(x, y).release().perform();
+
+//        $(recA).dragAndDropTo($(recB));
         $(recB).shouldHave(text("A"));
         $(recA).shouldHave(text("B"));
     }
