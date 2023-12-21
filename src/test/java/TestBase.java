@@ -12,7 +12,6 @@ public class TestBase {
 
         Configuration.browserCapabilities = new ChromeOptions().addArguments("--remote-allow-origins=*");
         Configuration.holdBrowserOpen = true;
-        //System.setProperty("webdriver.chrome.driver", "D:\\chromedriver\\chromedriver.exe");
         Configuration.pageLoadTimeout = 60000;
 
         String browserVersion = System.getProperty("browserVersion", "120.0.6099.110");
