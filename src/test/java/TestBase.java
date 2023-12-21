@@ -16,5 +16,6 @@ public class TestBase {
 
         String browserVersion = System.getProperty("browserVersion", "120.0.6099.110");
         Configuration.browserVersion = browserVersion;
+        Configuration.baseUrl = "https://github.com";
     }
 }
