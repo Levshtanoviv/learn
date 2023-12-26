@@ -1,11 +1,16 @@
+package tests;
+
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.Test;
+import page.RegistrationPage;
+
+import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class HomeWorks extends TestBase{
+public class HomeWorks extends TestBase {
     @Test
     void searchExampleCodeFromJUnit_L3() {
         open("https://github.com/selenide/selenide");
@@ -22,7 +27,7 @@ public class HomeWorks extends TestBase{
     void loadingWebSite_L4() {
         SelenideElement title = $("#hero-section-brand-heading");
 
-        open("/selenide/selenide");
+        open("https://github.com/selenide/selenide");
         $(byText("Solutions")).hover();
         $(byText("Enterprise")).click();
         title.shouldHave(text("The AI-powered developer platform."));
@@ -45,4 +50,28 @@ public class HomeWorks extends TestBase{
 //        $(recA).dragAndDropTo($(recB));
         $(recB).shouldHave(text("A"));
         $(recA).shouldHave(text("B"));
+    }
+
+    @Test
+    public void PracticeFormTest() {
+        RegistrationPage registrationPage = new RegistrationPage();
+
+        registrationPage.openPage()
+                .setFirstName("Иван")
+                .setLastName("Петров")
+                .setUserEmail("ivpet@mail.ru")
+                .setGender()
+                .setUserNumber("89279998562")
+                .setDateOfBirth("22", "March", "1996")
+                .setSubjects("Commerce")
+                .setHobbies("Music")
+                .uploadFile(new File("src/test/resources/1.pdf"))
+                .setCurrentAddress("Moskva")
+                .setStateAndCity("3", "Uttar Pradesh")
+                .setStateAndCity("4", "Agra")
+                .submitBtn();
+
+        registrationPage.verifyModalAppears()
+                        .verifyResult("Student Name", "Иван Петров");
+    }
 }
