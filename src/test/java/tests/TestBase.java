@@ -1,3 +1,5 @@
+package tests;
+
 import com.codeborne.selenide.Configuration;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.BeforeAll;
@@ -16,6 +18,7 @@ public class TestBase {
 
         String browserVersion = System.getProperty("browserVersion", "120.0.6099.110");
         Configuration.browserVersion = browserVersion;
-        Configuration.baseUrl = "https://github.com";
+        Configuration.browserSize = "1920x1080";
+//        Configuration.baseUrl = "https://github.com";
     }
 }
